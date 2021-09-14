@@ -83,24 +83,4 @@ body{
     .container .container-card-container .card .photo img{
         width: 100%;
     }
-    .container .container-card-container .card h3{
-        text-align: center;
-        
-    }
-    .container .container-card-container .card p{
-        text-align: center; 
-    }
-    .container .container-card-container .card .btnDiv{
-        display: flex;
-        justify-content: space-around;
-    }
-    .container .container-card-container .card .btnDiv button{
-        border: none;
-        border-radius: 30px;
-        background-color: rgb(71, 212, 36);
-    }
-    .container .container-card-container .card .btnDiv button:hover{
-        background-color: rgb(32, 80, 20);
-        color: wheat;
-    }
 }
