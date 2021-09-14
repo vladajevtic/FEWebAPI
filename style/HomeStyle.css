@@ -1,0 +1,106 @@
+body{
+    margin: 0;
+    box-sizing: border-box;
+    background-color: rgb(2, 82, 2);
+    padding: 10px;
+}
+.container{
+    width: 100%;
+}
+.container .container-card-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    width: 100%;
+    gap: 10px 20px;
+    border-radius: 10%;
+}
+.container .container-card-container .card{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px 20px;
+    padding: 10px;
+    background-color: rgba(133, 170, 99, 0.548);
+    width: 90%;
+    border-radius: 10%;
+}
+.container .container-card-container .card .photo{
+    
+    height: 100px;
+    width: 100px;   
+}
+.container .container-card-container .card .photo img{
+    width: 100%;
+}
+.container .container-card-container .card h3{
+    text-align: center;
+    
+}
+.container .container-card-container .card p{
+    text-align: center; 
+}
+.container .container-card-container .card .btnDiv{
+    display: flex;
+    justify-content: space-around;
+}
+.container .container-card-container .card .btnDiv button{
+    border: none;
+    border-radius: 30px;
+    background-color: rgb(71, 212, 36);
+}
+.container .container-card-container .card .btnDiv button:hover{
+    background-color: rgb(32, 80, 20);
+    color: wheat;
+}
+@media only screen and (min-width: 800px){
+    .container .container-card-container{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-around;
+        align-content: stretch;
+        width: 100%;
+        gap: 10px 20px;
+        border-radius: 10%;
+    }
+    .container .container-card-container .card{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px 20px;
+        padding: 10px;
+        background-color: rgba(133, 170, 99, 0.548);
+        width: 30%;
+        border-radius: 10%;
+    }
+    .container .container-card-container .card .photo{
+        
+        height: 200px;
+        width: 200px;   
+    }
+    .container .container-card-container .card .photo img{
+        width: 100%;
+    }
+    .container .container-card-container .card h3{
+        text-align: center;
+        
+    }
+    .container .container-card-container .card p{
+        text-align: center; 
+    }
+    .container .container-card-container .card .btnDiv{
+        display: flex;
+        justify-content: space-around;
+    }
+    .container .container-card-container .card .btnDiv button{
+        border: none;
+        border-radius: 30px;
+        background-color: rgb(71, 212, 36);
+    }
+    .container .container-card-container .card .btnDiv button:hover{
+        background-color: rgb(32, 80, 20);
+        color: wheat;
+    }
+}
