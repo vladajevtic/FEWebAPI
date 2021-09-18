@@ -12,7 +12,7 @@ function getProducts(){
       })
       .then(arr => {
         renderList(arr);
-        console.log('resolved second promise', arr);
+        //console.log('resolved second promise', arr);
       })
       .catch(err => {
         console.log(err);
@@ -20,41 +20,42 @@ function getProducts(){
     }
     getProducts();
 
+  
     function renderList(arr){
         
-        const cardContainer = document.querySelector(".container .container-card-container")
+        let cardContainer = document.querySelector(".container .container-card-container")
         arr.forEach(element => {
-            const card = document.createElement("div");
+            let card = document.createElement("div");
             card.className = "card";
-            const imageContainer = document.createElement("div");
+            let imageContainer = document.createElement("div");
             imageContainer.className = 'photo';
             let img = document.createElement("img");
             //img.setAttribute("src", element.image.Path);
             img.setAttribute("alt", "NEKA slika");
             imageContainer.appendChild(img);
 
-            const name = document.createElement("h3");
+            let name = document.createElement("h3");
             name.textContent = element.name;
 
-            const price = document.createElement("p");
+            let price = document.createElement("p");
             price.textContent = element.price + " " +"Dinara";
 
-            const size = document.createElement("p");
+            let size = document.createElement("p");
             size.textContent = "Velicina : " + element.size;
 
-            const btnDiv = document.createElement("div");
+            let btnDiv = document.createElement("div");
             btnDiv.className = "btnDiv";
 
             let addBtn = document.createElement("button");
             addBtn.textContent = "Add to order";
             let detailsBtn = document.createElement("a");
             detailsBtn.textContent = "Details";
-            detailsBtn.setAttribute("href", "/Details");
+            detailsBtn.setAttribute("href", baseUrl + "/api/product/" + element.id);
             btnDiv.appendChild(addBtn);
             btnDiv.appendChild(detailsBtn);
-            addBtn.addEventListener("click", /*addToList(this.id)*/function(){
-                this.style.background = "yellow"
-                this.style.color = "black"
+            addBtn.addEventListener("click", function(){
+
+              addToList(arr,element.id)
             })
             
             card.appendChild(imageContainer);
@@ -63,9 +64,72 @@ function getProducts(){
             card.appendChild(size);
             card.appendChild(btnDiv);
             cardContainer.appendChild(card);
-        });
-    }
+          });
+        }
+// ShoppingCart 
+const listOfOrder = [];
 
-    function addToList(arr, id){
-            arr.Filter(x => x.id == id)
-    }
+function addToList(arr,id){
+  let element =  arr.findIndex(function(el) {
+    return el.id === id;
+  })
+  console.log(arr[element]);
+
+  let list = document.querySelector("header .list");
+  let ul = document.createElement("ul");
+  let li = document.createElement("li");
+  let name = document.createElement("h3");
+  name.textContent = arr[element].name;
+
+  let price = document.createElement("p");
+  price.textContent = arr[element].price + " " +"Dinara";
+
+  let size = document.createElement("p");
+  size.textContent = "Velicina : " + arr[element].size;
+  
+  li.appendChild(name);
+  li.appendChild(price);
+  li.appendChild(size);
+  ul.appendChild(li);
+  list.appendChild(ul);
+  let item = {
+    name: arr[element].name,
+    price: arr[element].price,
+    size: arr[element].size
+  }
+  listOfOrder.push(item);
+} 
+
+let shoppingCart = document.querySelector("header .cart .cartBtn");
+   
+//console.log(shoppingCart)
+shoppingCart.addEventListener("click", function(){
+let list = document.querySelector("header .list");
+list.style.display = "block";
+console.log(listOfOrder);
+})
+
+//Button SEND
+let sendBtn = document.querySelector("header .list .send");
+
+function postOrder(arr) {
+  arr.forEach(element =>{
+
+    let req = new Request(baseUrl + '/api/order', 
+          ({ method: 'POST',
+             headers: {'Content-Type': 'application/json',},
+             body: JSON.stringify(element) 
+            }));
+    fetch(req)
+    .then(res => {
+      console.log(res);
+      getSliders();
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  })
+}
+sendBtn.addEventListener("click", function(){
+  postOrder(listOfOrder);
+})
