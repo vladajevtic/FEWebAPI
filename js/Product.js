@@ -68,6 +68,14 @@ function getProducts(){
         }
 // ShoppingCart 
 const listOfOrder = [];
+function getTotal(arr){
+  let sum = 0;
+  arr.forEach(e =>{
+    sum += e.price;
+  })
+  return sum;
+}
+
 
 function addToList(arr,id){
   let element =  arr.findIndex(function(el) {
@@ -75,7 +83,7 @@ function addToList(arr,id){
   })
   console.log(arr[element]);
 
-  let list = document.querySelector("header .list");
+  let list = document.getElementById("orderList");
   let ul = document.createElement("ul");
   let li = document.createElement("li");
   let name = document.createElement("h3");
@@ -86,7 +94,7 @@ function addToList(arr,id){
 
   let size = document.createElement("p");
   size.textContent = "Velicina : " + arr[element].size;
-  
+
   li.appendChild(name);
   li.appendChild(price);
   li.appendChild(size);
@@ -98,15 +106,22 @@ function addToList(arr,id){
     size: arr[element].size
   }
   listOfOrder.push(item);
+  let total = document.getElementById("total");
+  total.textContent = getTotal(listOfOrder);
 } 
 
 let shoppingCart = document.querySelector("header .cart .cartBtn");
    
 //console.log(shoppingCart)
 shoppingCart.addEventListener("click", function(){
-let list = document.querySelector("header .list");
-list.style.display = "block";
-console.log(listOfOrder);
+let list = document.getElementById("orderList");
+if(list.style.display === "block"){
+  list.style.display ="none"
+}else{
+  list.style.display ="block"
+};
+// list.classList.toggle("list");
+// console.log(listOfOrder);
 })
 
 //Button SEND

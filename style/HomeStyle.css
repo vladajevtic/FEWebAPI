@@ -4,10 +4,18 @@ body{
     background-color: rgb(2, 82, 2);
     padding: 10px;
 }
-header .list{
-    display: none;
+
+header{
     position: relative;
 }
+.list{
+    width: 500px;
+    display: none;
+    position: absolute;
+    background-color: darkseagreen;
+    
+}
+
 .container{
     width: 100%;
 }
@@ -61,8 +69,15 @@ header .list{
 header .list .send{
     background-color: blue;
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 10px;
+    bottom: 10px;
+    padding: 10px 20px;
+    border-radius: 15px; 
+}
+#total{
+    position: sticky;
+    left: 250px;
+    
 }
 @media only screen and (min-width: 800px){
     .container .container-card-container{
