@@ -1,4 +1,4 @@
-const baseUrl = "https://localhost:44377";
+let baseUrl = "https://localhost:44377";
 function getProducts(){
     let req = new Request(baseUrl + "/api/product", ({method : "GET"}));
     fetch(req)
@@ -138,7 +138,7 @@ function postOrder(arr) {
     fetch(req)
     .then(res => {
       console.log(res);
-      getSliders();
+      
     })
     .catch(err => {
       console.log(err);
