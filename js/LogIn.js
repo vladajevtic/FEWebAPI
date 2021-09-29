@@ -6,11 +6,13 @@ const submit = document.querySelector("#submit");
 
 let baseUrl = "https://localhost:44377";
 
-function submitUser() {
+function submitUser(e) {
+  e.preventDefault();
     const data = {
-        userName : inputUserName.textContent,
-        password : inputPassword.textContent
+        userName : inputUserName.value,
+        password : inputPassword.value
     }
+    
     let req = new Request(baseUrl + '/api/user', 
           ({ method: 'POST',
              headers: {'Content-Type': 'application/json',},
@@ -18,16 +20,15 @@ function submitUser() {
             }));
     fetch(req)
     .then(res => {
-      if(res.ok){
-          continue;
-      }
+      
+        myFunction(res);
     })
     .catch(err => {
-      let error = document.createElement("h1");
-      error.textContent = err;
-      let doc = document.querySelector(".container");
-      doc.appendChild(error);
+     console.log(err);
     });
   }
-
+  function myFunction() {
+    
+    location.replace("http://127.0.0.1:5500/Home.html");
+  }
   submit.addEventListener("click", submitUser );

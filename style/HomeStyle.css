@@ -6,14 +6,24 @@ body{
 }
 
 header{
-    position: relative;
+    position: sticky;
+    top:0;
 }
-.list{
+header .list{
+    
+    height: 500px;
     width: 500px;
     display: none;
     position: absolute;
     background-color: darkseagreen;
     
+    
+}
+header .list .cartList{
+    padding: 5px;
+    height: 400px;
+    overflow: auto;
+    background-color: rgb(131, 246, 183);
 }
 
 .container{
@@ -33,7 +43,7 @@ header{
     flex-direction: column;
     text-align: center;
     gap: 10px 20px;
-    padding: 10px;
+    padding: 20px;
     background-color: rgba(133, 170, 99, 0.548);
     width: 90%;
     border-radius: 10%;
