@@ -20,8 +20,17 @@ function submitUser(e) {
             }));
     fetch(req)
     .then(res => {
-      
-        myFunction(res);
+      if(res.ok){
+        myFunction();
+      }else{
+        let error = document.createElement("h3");
+        error.textContent = "UserName  or password are incorrect";
+        error.style.color = 'red'
+        let cont = document.querySelector(".container");
+        cont.appendChild(error);
+        
+      }
+        
     })
     .catch(err => {
      console.log(err);
@@ -29,6 +38,6 @@ function submitUser(e) {
   }
   function myFunction() {
     
-    location.replace("http://127.0.0.1:5500/Home.html");
+    location.replace("http://127.0.0.1:5500/Product.html");
   }
   submit.addEventListener("click", submitUser );
