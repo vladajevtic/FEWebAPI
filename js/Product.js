@@ -1,6 +1,20 @@
 let baseUrl = "https://localhost:44377";
+// const token = '{
+//   "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfb…zNjF9.OkRpk56rQoseQGfZQebIQRJNLPd66M5AkDwGEJJcHa8"
+// }'
+const token = '{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfb…zNjF9.OkRpk56rQoseQGfZQebIQRJNLPd66M5AkDwGEJJcHa8"}'
+
+const obj = JSON.parse(token);
+console.log(obj)
+
 function getProducts(){
-    let req = new Request(baseUrl + "/api/product", ({method : "GET"}));
+    let req = new Request(baseUrl + "/api/product", (
+      {
+        method : "GET",
+        headers: { 
+        'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjEiLCJyb2xlIjoiTWFuYWdlciIsIm5iZiI6MTYzMzM3MzQ0MiwiZXhwIjoxNjMzOTc4MjQyLCJpYXQiOjE2MzMzNzM0NDJ9.oVfp0LiRRxYkIgnxCDBCU4kW_nRf_64306r7d9KE9ts'
+                }
+      }));
     fetch(req)
     .then(res => {
         // console.log('res', res)
@@ -134,24 +148,27 @@ function addToList(arr,id,quantity){
   quantityInput.max = 10;
   quantityInput.className = "listQuantity";
   quantityInput.value = quantity.value;
-  
+  // if(productPost["productId"] === arr[element].id){
+  //   quantityInput.value += quantity.value;
+  // }else{
+  //   quantityInput.value = quantity.value;
+  // }
 
-  li.appendChild(quantityInput);
-  console.log(quantityInput.value)
   li.appendChild(name);
   li.appendChild(price);
+  li.appendChild(quantityInput);
+  
   li.appendChild(size);
   let deleteBtn = document.createElement("button");
   deleteBtn.textContent = "Delete order";
   deleteBtn.addEventListener("click", function(){
-    
     for(let i=0; i<listForCart.length; i++){
         if(listForCart[i]["productId"] ===arr[element].id ){
           listForCart.splice(i, 1);
         }
     }
     li.remove();
-  })
+  });
   li.appendChild(deleteBtn);
   
   ol.appendChild(li);

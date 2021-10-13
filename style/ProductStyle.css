@@ -8,6 +8,9 @@ body{
 header{
     position: sticky;
     top:0;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
 }
 header .list{
     
@@ -24,6 +27,17 @@ header .list .cartList{
     height: 400px;
     overflow: auto;
     background-color: rgb(131, 246, 183);
+}
+header .profile{
+    padding-top: 5px;
+}
+header .profile .my-profile{
+    background-color: limegreen;
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 3px;
+    border-radius: 2px;
 }
 
 .container{

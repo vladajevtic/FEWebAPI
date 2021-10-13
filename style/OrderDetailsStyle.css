@@ -1,0 +1,22 @@
+body{
+    margin: 0;
+    box-sizing: border-box;
+    background-color: rgb(2, 82, 2);
+    padding: 10px;
+}
+.container{
+    background-color: darkgray;
+}
+.container .card{
+    padding: 5px;
+    background-color: lightgray;
+    margin: 5px;
+}
+
+.container .card .total{
+    background-color: lightgreen;
+}
+.container .card .product{
+    text-align: center;
+    background-color: lightgreen;
+}

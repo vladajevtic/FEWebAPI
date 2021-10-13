@@ -19,19 +19,33 @@ function submitUser(e) {
              body: JSON.stringify(data) 
             }));
     fetch(req)
-    .then(res => {
-      if(res.ok){
-        myFunction();
-      }else{
-        let error = document.createElement("h3");
-        error.textContent = "UserName  or password are incorrect";
-        error.style.color = 'red'
-        let cont = document.querySelector(".container");
-        cont.appendChild(error);
-        
-      }
-        
+  //   .then(res =>{
+  //     console.log(req);
+  //      myFunction();
+  //   })
+  //   .catch(err => {
+  //       console.log(err);
+  //       });
+  // }
+    .then(res => res.json())
+    .then(json =>{
+      console.log(json);
+      // console.log(json.token);
+      // myFunction();
     })
+      // if(res.ok){
+        
+        
+      // }else{
+      //   let error = document.createElement("h3");
+      //   error.textContent = "UserName  or password are incorrect";
+      //   error.style.color = 'red'
+      //   let cont = document.querySelector(".container");
+      //   cont.appendChild(error); 
+      // }
+        
+    
+    
     .catch(err => {
      console.log(err);
     });
